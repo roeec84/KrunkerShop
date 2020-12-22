@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="KrunkerEx.ShopPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KrunkerEx"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.TopAppBar>
+        <CommandBar OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+            <AppBarButton x:Name="backBtn" Icon="BackToWindow" Label="Back To Main Menu" Click="backBtn_Click"/>
+            <AppBarButton x:Name="cartBtn" Icon="Shop" Label="Go To Cart" Click="cartBtn_Click"/>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ComboBox x:Name="categoryList" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" SelectionChanged="categoryList_SelectionChanged"/>
+            <ComboBox x:Name="itemsList" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" SelectionChanged="itemsList_SelectionChanged"/>
+        </Grid>
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Sort by:"/>
+            <ComboBox x:Name="sortCmbx" Margin="0, 10, 0, 0" Width="100" SelectionChanged="sortCmbx_SelectionChanged">
+                <x:String>Name</x:String>
+                <x:String>Price</x:String>
+                <x:String>Discount</x:String>
+            </ComboBox>
+        </StackPanel>
+        <Button x:Name="addToCartBtn" Content="Add To Cart" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Click="addToCartBtn_Click"/>
+        <FlipView x:Name="itemsShow" MaxWidth="400" Height="270" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Background="White" SelectionChanged="itemsShow_SelectionChanged"/>
+        <TextBlock x:Name="itemDetails" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Page>

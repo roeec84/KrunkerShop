@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="KrunkerEx.ManagerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KrunkerEx"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.TopAppBar>
+    <CommandBar OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
+        <AppBarButton x:Name="backBtn" Icon="BackToWindow" Label="Back To Main Menu" Click="backBtn_Click"/>
+        <AppBarButton x:Name="receBtn" Icon="List" Label="Receiptions" Click="receBtn_Click"/>
+        </CommandBar>
+    </Page.TopAppBar>
+    
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="categoryList" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="5" Width="150" Visibility="Visible" SelectionChanged="categoryList_SelectionChanged"/>
+        <FlipView x:Name="itemsShow" MaxWidth="400" Height="270" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Background="White" SelectionChanged="itemsShow_SelectionChanged"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Name: "/>
+            <TextBlock x:Name="itemName" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Price: " Margin="0, 5, 0, 0"/>
+            <TextBox x:Name="itemPrice" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="$" Margin="0, 5, 0, 0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Amount: " Margin="0, 5, 0, 0"/>
+            <TextBox x:Name="itemAmount" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Discount: " Margin="0, 5, 0, 0"/>
+            <TextBox x:Name="itemDiscount" Margin="10, 0, 0, 0"/>
+            <TextBlock Text="%" Margin="0, 5, 0, 0"/>
+        </StackPanel>
+        <StackPanel x:Name="sizeStack" Orientation="Horizontal" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="Size: "/>
+            <TextBlock x:Name="itemSize" Margin="10, 0, 0, 0"/>
+        </StackPanel>
+        <ListBox x:Name="itemsList" Grid.Row="3" Grid.Column="5" Grid.RowSpan="3" SelectionChanged="OnItemListCreateChange"/>
+        <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Sort by:"/>
+            <ComboBox x:Name="sortCmbx" Margin="0, 10, 0, 0" Width="100" SelectionChanged="sortCmbx_SelectionChanged">
+                <x:String>Name</x:String>
+                <x:String>Price</x:String>
+                <x:String>Discount</x:String>
+            </ComboBox>
+        </StackPanel>
+        <Button x:Name="itemCreate" Content="Create" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="5" Width="180" Height="100" Visibility="Visible" Click="itemCreate_Click"/>
+    </Grid>
+</Page>
